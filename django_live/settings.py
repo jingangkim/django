@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'tabom.apps.TabomConfig',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -128,3 +129,16 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# 좋아요 기능의 요구사항
+
+# - 게시글(그것이 댓글이든, 유튜브 영상이든, 블라인드 포스트이든)에 “좋아요”를 누를 수 있다. (이때 좋아요 개수가 증가한다.)
+# session.add(like)
+# - 한 사용자는 하나의 게시글에 단 하나의 좋아요만 할 수 있다!
+# user_id = get
+# - 이미 좋아요 했는지 여부를 표시해 주어야 한다.
+# if like:
+# - 이미 좋아요를 했다면, 좋아요 버튼을 다시 누름으로써 좋아요를 취소할 수 있다. (이때 좋아요 개수가 감소한다.)
+#
+# - 게시글의 리스트(최신 게시글이 맨 위로 오도록)를 보여준다. 이 때 좋아요 받은 개수도 같이 보여준다.
+# order by
