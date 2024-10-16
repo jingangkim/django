@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    'tabom.apps.TabomConfig',
+    "tabom.apps.TabomConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -75,7 +75,7 @@ WSGI_APPLICATION = "django_live.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-#databases가 두개면 오류 발생
+# databases가 두개면 오류 발생
 pymysql.install_as_MySQLdb()
 DATABASES = {
     "default": {
