@@ -1,3 +1,5 @@
+from multiprocessing.managers import Value
+
 from django.test import TestCase
 
 from tabom.models import Article, Like, User
@@ -18,3 +20,21 @@ class TestLikeService(TestCase):
         self.assertIsNotNone(like.id)
         self.assertEqual(user.id, like.user_id)
         self.assertEqual(article.id, like.article_id)  #
+
+#user는 하나의 게시글에 하나의 like만 가능하다.
+    def test_a_user_can_not_like_an_article_only_once(self) -> None:
+       #given
+        user = User.objects.create(name="test")
+        article = Article.objects.create(title="test_title")
+
+        try:
+            Like.objects.get(user=user, article=article)
+            raise ValueError
+        except Like.DoesNotExist:
+            return Like.objects.create(user=user, article=article)
+        # like1 = do_like(user.id, article.id)
+        # with self.assertRaises(Exception):
+        #     like2 = do_like(user.id, article.id)
+
+
+
