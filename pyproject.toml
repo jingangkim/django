@@ -46,3 +46,13 @@ profile = "black"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.coverage.report]
+fail_under = 80
+
+[tool.coverage.run]
+omit = [
+  ".mypy_cache/**/*",
+  "*/migrations/*",
+  "*/*test*.py",
+]
+

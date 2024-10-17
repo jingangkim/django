@@ -15,9 +15,14 @@ class User(BaseModel):
 
 
 class Article(BaseModel):
-    title = models.CharField(max_length=255)  # 타이틀, 글자제한 50
+    title = models.CharField(max_length=255)  #
 
 
 class Like(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["user", "article"], name="unique_user_article"),
+        ]
